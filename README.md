@@ -31,6 +31,7 @@ Her bir komşu ilişki için farklı bir yeniden oluşum matrisi mevcuttur. Yön
 
 ![4](https://user-images.githubusercontent.com/61785942/171361033-5798b555-aa16-4aba-8d15-591b85049bc1.png)
 
+
 GLCM Homojenlik 
 Bir hücrenin belli bölgelerinde homojenlik görünüyor ve GLCM değerleri de köşelerde yoğunlaşıyorsa bu hücrenin renk değeri yüksektir. Homojen alanların renk değerleri ile heterojen alanların renk değerleri bir birine zıtlık göstermektedir. Değerler heterojen alanlardan homojen alanlara doğru azalarak gitmektedir. Hesaplama için parametreler şu şekildedir:
 
@@ -42,17 +43,21 @@ Bir hücrenin belli bölgelerinde homojenlik görünüyor ve GLCM değerleri de 
 
 Homojenlik =  2 + 1 + 1/10 …
 
-GLCM Zıtlık 
+
+GLCM Zıtlık
 Zıtlık homojenliğin tam tersi olan heterojenliktir. Zıtlık görüntüde lokal değişim miktarının belirlenmesi yolu ile tespit edilir. Zıtlığın artmasına paralel olarak satır (i) ve sütun (j) sayısı da artış gösterir. Hesaplama için parametreler şu şekildedir:
 
  ![6](https://user-images.githubusercontent.com/61785942/171361177-4dd5d218-e444-4654-a704-b876a9e2b25d.png)
+
 
 GLCM Farklılık 
 Farklılık zıtlık kavramıyla yakın anlam taşımasına rağmen elde edilen değerlerin doğrusal bir artış göstermesi bakımından farklılık gösterir. Lokal değişim ne kadar fazla ise GLCM farklılığı da o kadar yüksektir. Hesaplama için parametreler şu şekildedir:
 
  ![7](https://user-images.githubusercontent.com/61785942/171361227-954d53ec-c7f7-440a-a6b7-85f89e6e6623.png)
 
+
 GLCM Ortalama 
+
 GLCM ortalaması adından da anlaşılacağı üzere GLCM değerlerinin ortalamasıdır. İşlem sonucunda hücre değeri, pikselin görüntüde bulunma oranına göre değil bu piksellerin komşu piksellerle olan kombinasyonlarına göre derecelendirilir. Hesaplama için parametreler şu şekildedir:
 
  ![8](https://user-images.githubusercontent.com/61785942/171361270-8f154bca-7fda-4e4b-8336-1f8fbef41dca.png)
@@ -66,7 +71,7 @@ GLCM değerleri kullanılarak GLCM Standart Sapması hesaplanır. Bu durum, öze
 
 GLCM Korelasyon 
 Gri renk düzeyindeki komşu piksellerin doğrusal bağımlılıklarını ölçmek için kullanılır. Hesaplama için parametreler şu şekildedir:
- 
+
 
 ![10](https://user-images.githubusercontent.com/61785942/171361375-3e90f056-1b50-4d3f-83f4-83dc28472d5e.png)
 
