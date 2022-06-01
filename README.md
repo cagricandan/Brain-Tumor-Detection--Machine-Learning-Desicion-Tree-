@@ -43,12 +43,6 @@ Bir hücrenin belli bölgelerinde homojenlik görünüyor ve GLCM değerleri de 
 
  ![5](https://user-images.githubusercontent.com/61785942/171361105-98364d4c-1ee6-46ac-98f9-1d4fb7b8af55.png)
 
-İ=0, j=0   :  2/(1+(0-0)2)  = 2
-İ=0, j = 1 :  2/(1+(0-1)2)  = 1
-İ=0, j=3  : 1/(1+(0-3)2)  =1/10 
-
-Homojenlik =  2 + 1 + 1/10 …
-
 
 GLCM Zıtlık:
 
