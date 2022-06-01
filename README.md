@@ -4,6 +4,7 @@ Beyin tümörü tespiti için doku özelliği çıkartımı ile birlikte tespiti
 Beyin Tümörü veriler: https://www.kaggle.com/datasets/ahmedhamada0/brain-tumor-detection?resource=download
 
 Yöntem:
+
 Veri Seti:
 Çalışmada 3000 Beyin MR görüntüsü kullanılmıştır. Bunlardan 1500'ü sağlıklı iken 1500'ü ise tümörlü beyinin MR görüntüsüdür.
 
