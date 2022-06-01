@@ -6,17 +6,21 @@ Beyin Tümörü veriler: https://www.kaggle.com/datasets/ahmedhamada0/brain-tumo
 Yöntem:
 
 Veri Seti:
+
 Çalışmada 3000 Beyin MR görüntüsü kullanılmıştır. Bunlardan 1500'ü sağlıklı iken 1500'ü ise tümörlü beyinin MR görüntüsüdür.
 
 Ön İşleme:
+
 İlk olarak, görüntülerin boyutu, işlenmelerini kolaylaştırmak için 500x500 piksele ayarlanmıştır. Bir görüntü, her pikselin bir öğesi olduğu, 0 ile 255 arasında değişen (gri tonlamalı) sayısal bir değerle temsil edilen bir m × n matrisinden oluşmaktadır. 
 Görüntülerden segmentasyon için görüntü işleme algoritmalarından bazıları kullanılmıştır. Bunun sonucunda MR görüntülerimizde tümörlü bölgeler açığa çıkarılmıştır 
 
 Özellik Çıkarımı:
+
 Özellik çıkarımı için GLCM doku özelliklerini kullandık.
 zıtlık, farklılık, homojenlik, ASM, enerji ve korelasyon değerlerini alarak makine öğrenmesi algoritmamıza verdik.
 
 Gray-Level Co-Occurrence Matrix (GLCM):
+
  Gri Seviye Eş Oluşum Matrisleri, görüntülerin doku özniteliklerinin çıkarılması için kullanılan istatistiksel bir yöntemdir. Gri seviye eş oluşum matrisleri hesaplanırken iki piksel arasındaki ilişki, uzaklık ve yön bilgisine bağlı olarak belirlenir. Tipik olarak bu yönler, 0 ˘ ◦ , 45◦ , 90◦ , 135◦ şeklinde alınabilir 
 Doku hesaplamasında GLCM için görüntü öncelikle aşağıdaki formüle göre normalize hale dönüştürülür.
  
@@ -33,7 +37,8 @@ Her bir komşu ilişki için farklı bir yeniden oluşum matrisi mevcuttur. Yön
 ![4](https://user-images.githubusercontent.com/61785942/171361033-5798b555-aa16-4aba-8d15-591b85049bc1.png)
 
 
-GLCM Homojenlik 
+GLCM Homojenlik:
+
 Bir hücrenin belli bölgelerinde homojenlik görünüyor ve GLCM değerleri de köşelerde yoğunlaşıyorsa bu hücrenin renk değeri yüksektir. Homojen alanların renk değerleri ile heterojen alanların renk değerleri bir birine zıtlık göstermektedir. Değerler heterojen alanlardan homojen alanlara doğru azalarak gitmektedir. Hesaplama için parametreler şu şekildedir:
 
  ![5](https://user-images.githubusercontent.com/61785942/171361105-98364d4c-1ee6-46ac-98f9-1d4fb7b8af55.png)
@@ -45,32 +50,36 @@ Bir hücrenin belli bölgelerinde homojenlik görünüyor ve GLCM değerleri de 
 Homojenlik =  2 + 1 + 1/10 …
 
 
-GLCM Zıtlık
+GLCM Zıtlık:
+
 Zıtlık homojenliğin tam tersi olan heterojenliktir. Zıtlık görüntüde lokal değişim miktarının belirlenmesi yolu ile tespit edilir. Zıtlığın artmasına paralel olarak satır (i) ve sütun (j) sayısı da artış gösterir. Hesaplama için parametreler şu şekildedir:
 
  ![6](https://user-images.githubusercontent.com/61785942/171361177-4dd5d218-e444-4654-a704-b876a9e2b25d.png)
 
 
-GLCM Farklılık 
+GLCM Farklılık:
+
 Farklılık zıtlık kavramıyla yakın anlam taşımasına rağmen elde edilen değerlerin doğrusal bir artış göstermesi bakımından farklılık gösterir. Lokal değişim ne kadar fazla ise GLCM farklılığı da o kadar yüksektir. Hesaplama için parametreler şu şekildedir:
 
  ![7](https://user-images.githubusercontent.com/61785942/171361227-954d53ec-c7f7-440a-a6b7-85f89e6e6623.png)
 
 
-GLCM Ortalama 
+GLCM Ortalama:
 
 GLCM ortalaması adından da anlaşılacağı üzere GLCM değerlerinin ortalamasıdır. İşlem sonucunda hücre değeri, pikselin görüntüde bulunma oranına göre değil bu piksellerin komşu piksellerle olan kombinasyonlarına göre derecelendirilir. Hesaplama için parametreler şu şekildedir:
 
  ![8](https://user-images.githubusercontent.com/61785942/171361270-8f154bca-7fda-4e4b-8336-1f8fbef41dca.png)
 
-GLCM Standart Sapma 
+GLCM Standart Sapma:
+
 GLCM değerleri kullanılarak GLCM Standart Sapması hesaplanır. Bu durum, özellikle komşu pikseller ve bu komşu piksellerin kombinasyonları ile alakalıdır. Bu özelliğinden dolayı orijinal görüntüdeki gri düzeyin basit standart sapması ile farklılık arz etmektedir. GLCM simetrik olduğu için i ya da j değerleri kullanılarak standart sapmanın hesaplanması durumunda da aynı sonuçlar bulunacaktır. Standart sapma ortalamaya yakın değerlerin dağılımını ifade ettiği için zıtlık ve benzemezlik ile benzerlikler göstermektedir. Hesaplama için parametreler şu şekildedir:
  
 
 ![9](https://user-images.githubusercontent.com/61785942/171361320-ccd5922d-e7fa-4e06-94cf-a1050b89162f.png)
 
 
-GLCM Korelasyon 
+GLCM Korelasyon:
+
 Gri renk düzeyindeki komşu piksellerin doğrusal bağımlılıklarını ölçmek için kullanılır. Hesaplama için parametreler şu şekildedir:
 
 
